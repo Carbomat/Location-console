@@ -54,7 +54,7 @@ const Sidebar = () => {
             </li>
             <li>
               <a href="/login" onClick={logOut} className={classes.navlink}>
-                Se deco
+                Deconnexion
               </a>
             </li>
           </ul>
