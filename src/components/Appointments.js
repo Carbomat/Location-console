@@ -48,7 +48,7 @@ const Appointments = () => {
       const d = new Date(appointment.appointment_date);
       const date = d.toString();
       return (
-        <Link to={`/appointments/${appointment.id}`} key={appointment.id}>
+        
           <div className="card m-4">
             <div className="card-body">
               <p>
@@ -57,7 +57,7 @@ const Appointments = () => {
               </p>
             </div>
           </div>
-        </Link>
+  
       );
     });
   }

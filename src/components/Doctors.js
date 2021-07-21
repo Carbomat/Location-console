@@ -37,7 +37,7 @@ const Doctors = () => {
   */
   const doctorsList = doctors.map(doctor => (
     <div key={doctor.id}>
-      <Link to={`/doctors/${doctor.id}`} className={classes.Doctors}>
+      
         <div className="d-flex flex-column align-items-center">
                   <img src={doctor.image} alt={doctor.name} className={`rounded-circle ${classes.img}`} />
                   <h5 className={`text-dark p-4 ${classes.border}`}>Neuf</h5>
@@ -47,7 +47,7 @@ const Doctors = () => {
             {doctor.prix}
           </p>
         </div>
-      </Link>
+      
       
     </div>
   ));
