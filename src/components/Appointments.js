@@ -46,13 +46,13 @@ const Appointments = () => {
   } else {
     appointments = content && content.map(appointment => {
       const d = new Date(appointment.appointment_date);
-      const date = d.toUTCString();
+      const date = d.toString();
       return (
         <Link to={`/appointments/${appointment.id}`} key={appointment.id}>
           <div className="card m-4">
             <div className="card-body">
               <p>
-                On &nbsp;
+                Le &nbsp;
                 {date}
               </p>
             </div>

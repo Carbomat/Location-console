@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/';
+const API_URL = 'https://backend-location-sabban.herokuapp.com/';
 
 const register = (name, email, password) => axios.post(`${API_URL}register`, {
   name,

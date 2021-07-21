@@ -2,7 +2,7 @@ import axios from 'axios';
 import authHeader from './auth-header';
 
 const API_URL = 'https://frozen-river-95471.herokuapp.com/';
-const API_URL2 = 'http://localhost:3000/';
+const API_URL2 = 'https://backend-location-sabban.herokuapp.com/';
 const getDoctors = () => axios.get(`${API_URL2}products`, { headers: authHeader() });
 const getDoctor = id => axios.get(`${API_URL}api/v1/doctors/${id}`, { headers: authHeader() });
 const getAppointments = id => axios.get(`${API_URL2}${id}/appointments`, { headers: authHeader() });
