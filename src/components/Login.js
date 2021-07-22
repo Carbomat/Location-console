@@ -65,7 +65,7 @@ const Login = () => {
   };
 
   if (isLoggedIn) {
-    return <Redirect to="/doctors" />;
+    return <Redirect to="/products" />;
   }
 
   return (
