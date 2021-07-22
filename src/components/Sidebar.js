@@ -31,14 +31,14 @@ const Sidebar = () => {
         </NavLink>
         {currentUser
             && (
-              <NavLink to="/profile" className={classes.navlink} activeClassName={classes.active}>
+              <NavLink to="/products" className={classes.navlink} activeClassName={classes.active}>
                 {currentUser.user.name}
               </NavLink>
             )}
         {currentUser ? (
           <ul>
             <li>
-              <NavLink to="/doctors" className={classes.navlink} activeClassName={classes.active}>
+              <NavLink to="/products" className={classes.navlink} activeClassName={classes.active}>
                 Catalogues
               </NavLink>
             </li>

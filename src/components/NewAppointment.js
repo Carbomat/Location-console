@@ -8,7 +8,7 @@ import CheckButton from 'react-validation/build/button';
 import { useAlert } from 'react-alert';
 import userService from '../services/user.service';
 import { setMessage } from '../actions/message';
-import getDoctors from '../actions/user';
+import getProducts from '../actions/user';
 
 const required = value => {
   if (!value) {
@@ -25,36 +25,36 @@ const NewAppointment = ({ location }) => {
   const form = useRef();
   const checkBtn = useRef();
   const { user: currentUser } = useSelector(state => state.auth);
-  const [doctorId, setDoctorId] = useState('');
+  const [productId, setProductId] = useState('');
   const [appointmentDate, setAppointmentDate] = useState('');
   const [successful, setSuccessful] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [loadingDoctors, setLoadingDoctors] = useState(false);
+  const [loadingProducts, setLoadingProducts] = useState(false);
   const { message } = useSelector(state => state.message);
-  const { doctors } = useSelector(state => state.user);
+  const { products } = useSelector(state => state.user);
   const dispatch = useDispatch();
   const alert = useAlert();
   useEffect(() => {
     if (location.doctorId) {
-      setDoctorId(location.doctorId);
+      setProductId(location.doctorId);
     } else {
-      setDoctorId(1);
+      setProductId(1);
     }
-    if (doctors.length === 0 && currentUser) {
-      setLoadingDoctors(true);
-      dispatch(getDoctors())
+    if (products.length === 0 && currentUser) {
+      setLoadingProducts(true);
+      dispatch(getProducts())
         .then(() => {
-          setLoadingDoctors(false);
+          setLoadingProducts(false);
         })
         .catch(() => {
           dispatch(setMessage('Unable to get doctors list'));
         });
     }
-  }, [doctors, dispatch]);
+  }, [products, dispatch]);
 
-  const onChangDoctorId = e => {
-    const doctorId = e.target.value;
-    setDoctorId(doctorId);
+  const onChangProductId = e => {
+    const productId = e.target.value;
+    setProductId(productId);
   };
 
   const onChangAppointmentDate = e => {
@@ -71,8 +71,8 @@ const NewAppointment = ({ location }) => {
 
 
       if (checkBtn.current.context._errors.length === 0) {
-        console.log("datasend",doctorId,appointmentDate)
-      userService.postAppointment(currentUser.user.id, doctorId, appointmentDate)
+        console.log("datasend",productId,appointmentDate)
+      userService.postAppointment(currentUser.user.id, productId, appointmentDate)
         .then(() => {
           setLoading(false);
           setSuccessful(true);
@@ -90,7 +90,7 @@ const NewAppointment = ({ location }) => {
       setLoading(false);
     }
   };
-  const options = doctors.map(product => (
+  const options = products.map(product => (
     <option
           key={product.id}
           value={product.id}
@@ -124,12 +124,12 @@ const NewAppointment = ({ location }) => {
               </div>
               <div className="form-group">
                 <label htmlFor="doctorId">Select list:</label>
-                <select className="form-control" id="doctorId" onChange={onChangDoctorId} value={doctorId}>
-                  {loadingDoctors ? <option>Loading..</option> : options }
+                <select className="form-control" id="doctorId" onChange={onChangProductId} value={productId}>
+                  {loadingProducts ? <option>Loading..</option> : options }
                 </select>
               </div>
               <div className="form-group">
-                <button className="btn btn-danger btn-block" disabled={loading || loadingDoctors} type="submit">
+                <button className="btn btn-danger btn-block" disabled={loading || loadingProducts} type="submit">
                   {loading && (
                   <span className="spinner-border spinner-border-sm" />
                   )}
@@ -155,7 +155,7 @@ const NewAppointment = ({ location }) => {
 
 NewAppointment.propTypes = {
   location: PropTypes.shape({
-    doctorId: PropTypes.number,
+    productId: PropTypes.number,
   }).isRequired,
 };
 export default NewAppointment;

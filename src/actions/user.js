@@ -1,16 +1,16 @@
 import {
-  DOCTORS_SUCCESS,
-  DOCTORS_FAIL,
+  PRODUCTS_SUCCESS,
+  PRODUCTS_FAIL,
   SET_MESSAGE,
 } from './types';
 
 import UserService from '../services/user.service';
 
-export default () => dispatch => UserService.getDoctors().then(
+export default () => dispatch => UserService.getProducts().then(
   response => {
     dispatch({
-      type: DOCTORS_SUCCESS,
-      payload: { doctors: response.data },
+      type: PRODUCTS_SUCCESS,
+      payload: { products: response.data },
     });
 
     dispatch({
@@ -27,7 +27,7 @@ export default () => dispatch => UserService.getDoctors().then(
         || error.message
         || error.toString();
     dispatch({
-      type: DOCTORS_FAIL,
+      type: PRODUCTS_FAIL,
     });
 
     dispatch({

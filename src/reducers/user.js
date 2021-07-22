@@ -1,20 +1,20 @@
 import {
-  DOCTORS_SUCCESS,
-  DOCTORS_FAIL,
+  PRODUCTS_SUCCESS,
+  PRODUCTS_FAIL,
 } from '../actions/types';
 
-const initialState = { doctors: [] };
+const initialState = { products: [] };
 
 export default function user(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case DOCTORS_SUCCESS:
+    case PRODUCTS_SUCCESS:
       return {
         ...state,
-        doctors: payload.doctors,
+        products: payload.products,
       };
-    case DOCTORS_FAIL:
+    case PRODUCTS_FAIL:
       return {
         ...state,
       };

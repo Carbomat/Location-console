@@ -5,11 +5,11 @@ import Carousel from 'react-multi-carousel';
 import SocialIcons from './UI/SocialIcons';
 import 'react-multi-carousel/lib/styles.css';
 import classes from '../styles/Doctors.module.css';
-import getDoctors from '../actions/user';
+import getProducts from '../actions/user';
 
-const Doctors = () => {
+const Products = () => {
   const { user: currentUser } = useSelector(state => state.auth);
-  const { doctors } = useSelector(state => state.user);
+  const { products } = useSelector(state => state.user);
   const { message } = useSelector(state => state.message);
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
@@ -18,9 +18,9 @@ const Doctors = () => {
     useEffect(() => {
         console.log("bro", currentUser)
         
-    if (doctors.length === 0 ) {
+    if (products.length === 0 ) {
       setLoading(true);
-      dispatch(getDoctors())
+      dispatch(getProducts())
         .then(() => {
           setSuccessful(true);
           setLoading(false);
@@ -29,22 +29,22 @@ const Doctors = () => {
           setLoading(false);
         });
     }
-  }, [doctors, dispatch]);
+  }, [products, dispatch]);
 /*
   if (!currentUser) {
     return <Redirect to="/login" />;
   }
   */
-  const doctorsList = doctors.map(doctor => (
-    <div key={doctor.id}>
+  const productsList = products.map(product => (
+    <div key={product.id}>
       
         <div className="d-flex flex-column align-items-center">
-                  <img src={doctor.image} alt={doctor.name} className={`rounded-circle ${classes.img}`} />
+                  <img src={product.image} alt={product.name} className={`rounded-circle ${classes.img}`} />
                   <h5 className={`text-dark p-4 ${classes.border}`}>Neuf</h5>
-          <h5 className={`text-dark p-4 ${classes.border}`}>{doctor.name}</h5>
+          <h5 className={`text-dark p-4 ${classes.border}`}>{product.name}</h5>
           <p className="text-secondary mt-3">
             <strong>Tarif:&nbsp;</strong>
-            {doctor.prix}
+            {product.prix}
           </p>
         </div>
       
@@ -105,7 +105,7 @@ const Doctors = () => {
         slidesToSlide={1}
         swipeable
       >
-        {doctorsList}
+              {productsList}
       </Carousel>
       {message && (
         <div className="form-group">
@@ -118,4 +118,4 @@ const Doctors = () => {
   );
 };
 
-export default Doctors;
+export default Products;

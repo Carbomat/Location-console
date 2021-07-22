@@ -11,7 +11,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
-import Doctors from './components/Doctors';
+import Products from './components/Products';
 import Doctor from './components/Doctor';
 import Appointments from './components/Appointments';
 import Appointment from './components/Appointment';
@@ -34,7 +34,7 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
-          <Route exact path="/doctors" component={Doctors} />
+          <Route exact path="/products" component={Products} />
           <Route exact path="/doctors/:id" component={Doctor} />
           <Route exact path="/appointments" component={Appointments} />
           <Route exact path="/appointments/new" component={NewAppointment} />
